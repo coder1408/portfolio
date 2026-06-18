@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 
 // Reveals an element once it scrolls into view. Returns a ref + boolean.
 // Respects prefers-reduced-motion (shows immediately, no animation).
-export function useReveal({ threshold = 0.15, rootMargin = '0px 0px -10% 0px' } = {}) {
+export function useReveal({ threshold = 0.05, rootMargin = '0px 0px 0px 0px' } = {}) {
   const ref = useRef(null)
   const [shown, setShown] = useState(false)
 

@@ -13,7 +13,7 @@ const Icon = ({ name, ...props }) => {
 
 export default function Timeline() {
   return (
-    <section id="journey" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-24 sm:px-8">
+    <section id="journey" className="cv-auto mx-auto max-w-7xl scroll-mt-24 px-5 py-24 sm:px-8">
       <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-16">
         {/* ── Left: sticky intro panel — uses the side space instead of leaving it blank ── */}
         <Reveal className="lg:sticky lg:top-28 lg:self-start">
@@ -54,7 +54,7 @@ export default function Timeline() {
             {timeline.map((item, i) => {
               const a = accent(item.accent)
               return (
-                <Reveal key={item.role + item.period} delay={i * 80} className="relative flex items-start gap-5 pl-0">
+                <Reveal key={item.role + item.period} delay={i * 40} className="relative flex items-start gap-5 pl-0">
                   {/* accent dot on the spine */}
                   <span
                     className={`relative z-10 mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full ${a.fill} ring-4 ring-cream`}

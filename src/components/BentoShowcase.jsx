@@ -168,7 +168,7 @@ export default function BentoShowcase() {
   ].filter(Boolean)
 
   return (
-    <section id="work" className="mx-auto max-w-7xl scroll-mt-24 px-5 py-24 sm:px-8">
+    <section id="work" className="cv-auto mx-auto max-w-7xl scroll-mt-24 px-5 py-24 sm:px-8">
       <Reveal className="flex flex-col items-start justify-between gap-4 sm:flex-row sm:items-end">
         <div>
           <p className="font-display text-sm font-bold uppercase tracking-widest text-terracotta">Selected Work</p>
@@ -184,7 +184,7 @@ export default function BentoShowcase() {
       {/* Asymmetric bento grid — each cell reveals on scroll with a stagger */}
       <div className="mt-10 grid grid-cols-1 gap-4 sm:auto-rows-[minmax(13.5rem,auto)] sm:grid-cols-4">
         {cells.map((c, i) => (
-          <Reveal key={c.key} delay={i * 60} className={c.span}>
+          <Reveal key={c.key} delay={i * 30} className={c.span}>
             {c.node}
           </Reveal>
         ))}

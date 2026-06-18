@@ -16,10 +16,11 @@ export default function Background() {
         }}
       />
 
-      {/* floating pastel blobs */}
-      <div className="absolute -left-24 top-24 h-72 w-72 animate-float-slow rounded-full bg-lilac/45 blur-3xl" />
-      <div className="absolute right-[-6rem] top-1/3 h-80 w-80 animate-float rounded-full bg-mint/40 blur-3xl" style={{ animationDelay: '1.5s' }} />
-      <div className="absolute bottom-10 left-1/3 h-64 w-64 animate-float-slow rounded-full bg-blush/45 blur-3xl" style={{ animationDelay: '3s' }} />
+      {/* floating pastel blobs — promoted to their own compositor layers so the
+          forever-running animation doesn't repaint the rest of the page */}
+      <div className="absolute -left-24 top-24 h-72 w-72 animate-float-slow rounded-full bg-lilac/45 blur-3xl [will-change:transform] [transform:translateZ(0)]" />
+      <div className="absolute right-[-6rem] top-1/3 h-80 w-80 animate-float rounded-full bg-mint/40 blur-3xl [will-change:transform] [transform:translateZ(0)]" style={{ animationDelay: '1.5s' }} />
+      <div className="absolute bottom-10 left-1/3 h-64 w-64 animate-float-slow rounded-full bg-blush/45 blur-3xl [will-change:transform] [transform:translateZ(0)]" style={{ animationDelay: '3s' }} />
     </div>
   )
 }

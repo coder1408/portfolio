@@ -61,6 +61,13 @@ body {
   background-size: 12px 12px;
 }
 
+/* Skip rendering work for sections still off-screen. contain-intrinsic-size
+   reserves an approximate height so the scrollbar doesn't jump as they render. */
+.cv-auto {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 800px;
+}
+
 /* Respect users who prefer reduced motion — kill the ambient loops. */
 @media (prefers-reduced-motion: reduce) {
   *,

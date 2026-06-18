@@ -11,7 +11,7 @@ const Icon = ({ name, ...props }) => {
 
 export default function Footer() {
   return (
-    <footer id="connect" className="scroll-mt-24 px-5 pb-10 pt-12">
+    <footer id="connect" className="cv-auto scroll-mt-24 px-5 pb-10 pt-12">
       <div className="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-ink/10 bg-ink p-8 text-cream sm:p-14">
         <p className="font-display text-sm font-bold uppercase tracking-widest text-butter">Connect</p>
         <h2 className="mt-3 max-w-2xl font-display text-4xl font-extrabold leading-[0.98] tracking-tight sm:text-6xl">
@@ -46,7 +46,7 @@ export default function Footer() {
           {socials.map((s, i) => {
             const a = accent(s.accent)
             return (
-              <Reveal key={s.label} delay={i * 80}>
+              <Reveal key={s.label} delay={i * 40}>
                 <a
                   href={s.href}
                   target={s.href.startsWith('mailto:') ? undefined : '_blank'}
