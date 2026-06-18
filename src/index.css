@@ -68,6 +68,38 @@ body {
   contain-intrinsic-size: auto 800px;
 }
 
+/* ── Mobile performance pass ──────────────────────────────────────────────
+   Phones have weak GPUs; backdrop-filter on ~10 full-width cards, the blurred
+   floating blobs, and the blend-mode grain are the main causes of scroll jank.
+   Below 640px we drop these effects. Cards lose their glass blur, so we make
+   their translucent cream backgrounds near-opaque to keep them looking crisp.  */
+@media (max-width: 639px) {
+  /* glass cards -> solid: kill the GPU-expensive backdrop blur */
+  [class*='backdrop-blur'] {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background-color: rgba(251, 247, 240, 0.96) !important; /* cream/96 */
+  }
+
+  /* freeze the infinite ambient loops (blobs, hero ring/card float) */
+  .animate-float,
+  .animate-float-slow,
+  .animate-spin-slow {
+    animation: none !important;
+  }
+
+  /* the floating blobs' heavy blur is the single most expensive paint; soften it */
+  .blur-3xl {
+    filter: blur(40px) !important;
+    opacity: 0.6;
+  }
+
+  /* the full-viewport blend-mode grain repaints on every scroll — drop it */
+  .grain::before {
+    display: none !important;
+  }
+}
+
 /* Respect users who prefer reduced motion — kill the ambient loops. */
 @media (prefers-reduced-motion: reduce) {
   *,

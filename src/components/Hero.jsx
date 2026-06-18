@@ -67,6 +67,8 @@ export default function Hero() {
               <img
                 src="/ishan.jpg"
                 alt={profile.name}
+                decoding="async"
+                fetchPriority="high"
                 className="h-full w-full scale-125 object-cover"
                 style={{ objectPosition: '44% 18%' }}
               />
