@@ -9,18 +9,7 @@ export default function Hero() {
       <div className="grid items-center gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:gap-16">
         {/* ── Left: copy ── */}
         <div>
-          <div
-            className="reveal inline-flex items-center gap-2 rounded-full border border-ink/10 bg-cream/60 px-4 py-1.5 text-sm font-medium backdrop-blur"
-            style={{ animationDelay: '0.05s' }}
-          >
-            <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-mint opacity-75" />
-              <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500" />
-            </span>
-            {profile.role}
-          </div>
-
-          <h1 className="reveal mt-6 font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl" style={{ animationDelay: '0.15s' }}>
+          <h1 className="reveal font-display text-5xl font-extrabold leading-[0.95] tracking-tight sm:text-7xl" style={{ animationDelay: '0.15s' }}>
             <span className="block">{profile.headline[0]}</span>
             <span className="relative inline-block">
               <span className="relative z-10 bg-gradient-to-r from-terracotta via-lilac to-sky bg-clip-text text-transparent">
