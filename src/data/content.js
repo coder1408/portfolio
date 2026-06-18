@@ -37,14 +37,6 @@ export const languages = [
   { name: 'German', level: 'Elementary' },
 ]
 
-// Quick-glance numbers for the bento stat cards.
-export const stats = [
-  { label: 'at Thelios AI', value: '1', unit: 'yr', icon: 'Briefcase', accent: 'mint' },
-  { label: 'KDD-99 accuracy', value: '94.4', unit: '%', icon: 'Target', accent: 'terracotta' },
-  { label: 'Sem 6 GPA', value: '8.48', unit: '/10', icon: 'GraduationCap', accent: 'butter' },
-  { label: 'Tumor-detect acc.', value: '89.4', unit: '%', icon: 'Activity', accent: 'sky' },
-]
-
 // Grouped skill pills.
 export const skills = [
   { group: 'Core', items: ['Python', 'C/C++', 'PyTorch', 'TensorFlow', 'NumPy', 'Pandas'] },
@@ -54,6 +46,8 @@ export const skills = [
 
 // Bento project cards. `size` drives the grid span:
 //   'feature' = big 2x2 highlight, 'wide' = 2 cols, 'standard' = 1 cell.
+// `link` = public repo (renders a clickable card). Omit for proprietary /
+//   company work where no code is available — that card stays non-clickable.
 export const projects = [
   {
     title: 'Dual-Path V-JEPA + MAE',
@@ -66,11 +60,42 @@ export const projects = [
     stack: ['PyTorch', 'MAE-ViT', 'Multi-GPU'],
   },
   {
+    title: 'Real-Time Player Tracking',
+    tag: 'Multi-Object Tracking',
+    size: 'wide',
+    accent: 'sky',
+    icon: 'Crosshair',
+    blurb:
+      'Real-time detection + tracking for NBA broadcast footage: YOLOv11 variants, SAM2 segmentation, and pose-keypoint extraction for players and court elements — profiled end-to-end to clear GPU latency bottlenecks.',
+    stack: ['YOLOv11', 'SAM2', 'Pose Estimation'],
+  },
+  {
+    title: 'Tracking Eval Framework',
+    tag: 'Benchmarking',
+    size: 'standard',
+    accent: 'butter',
+    icon: 'GaugeCircle',
+    blurb:
+      'A harness measuring identity consistency and ID-switch rates over long sequences, profiling speed–accuracy tradeoffs across tracker variants.',
+    stack: ['PyTorch', 'Profiling'],
+  },
+  {
+    title: 'RAG Research Assistant',
+    tag: 'Agentic AI',
+    size: 'standard',
+    accent: 'lilac',
+    icon: 'Bot',
+    blurb:
+      'A retrieval-augmented assistant that lets the team query and chat over research papers — I built the frontend and retrieval flow.',
+    stack: ['RAG', 'LLMs', 'React'],
+  },
+  {
     title: 'Network Intrusion Detection',
     tag: 'Anomaly Detection',
     size: 'standard',
     accent: 'terracotta',
     icon: 'ShieldCheck',
+    link: 'https://github.com/coder1408/Network-Intrusion-Detection-System',
     blurb: 'Random Forest + GBM ensemble with automated imbalance handling. 94.4% on KDD-99, 88.4% on NSL-KDD.',
     stack: ['TensorFlow', 'Scikit-learn'],
   },
@@ -78,16 +103,28 @@ export const projects = [
     title: 'Brain Tumor Detection',
     tag: 'Medical Imaging',
     size: 'standard',
-    accent: 'sky',
+    accent: 'mint',
     icon: 'Brain',
+    link: 'https://github.com/coder1408/BrainTumorDetection',
     blurb: 'CNN pipeline classifying tumors from MRI at 89.4% accuracy, served live via a Flask inference app.',
     stack: ['PyTorch', 'CNNs', 'Flask'],
+  },
+  {
+    title: 'Personal Finance Planner',
+    tag: 'Full-Stack',
+    size: 'wide',
+    accent: 'sky',
+    icon: 'Wallet',
+    link: 'https://github.com/coder1408/Finance-Planner',
+    blurb:
+      'A MERN + Next.js budgeting app with financial forecasting, data visualization, and JWT-secured auth over MongoDB.',
+    stack: ['Next.js', 'MongoDB', 'JWT'],
   },
   {
     title: 'Bird Migration Analysis',
     tag: 'Data Science',
     size: 'wide',
-    accent: 'mint',
+    accent: 'blush',
     icon: 'Bird',
     blurb:
       'Modeled climate & geography as drivers of route shifts across large-scale BNHS migration records — feeding biodiversity-conservation research.',

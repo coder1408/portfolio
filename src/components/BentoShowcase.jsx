@@ -1,13 +1,13 @@
 import {
-  Briefcase, Target, GraduationCap, Activity, Boxes, ShieldCheck, Brain, Bird,
-  ArrowUpRight, Layers, Award, Globe, BadgeCheck,
+  Boxes, ShieldCheck, Brain, Bird, Crosshair, GaugeCircle, Bot, Wallet,
+  ArrowUpRight, Layers, Award, Globe, BadgeCheck, Github, Lock,
 } from 'lucide-react'
-import { stats, skills, projects, certifications, languages } from '../data/content'
+import { skills, projects, certifications, languages } from '../data/content'
 import { accent } from '../lib/accents'
 import Reveal from './Reveal'
 
 // Resolve string icon names from content.js → actual lucide components.
-const icons = { Briefcase, Target, GraduationCap, Activity, Boxes, ShieldCheck, Brain, Bird }
+const icons = { Boxes, ShieldCheck, Brain, Bird, Crosshair, GaugeCircle, Bot, Wallet }
 const Icon = ({ name, ...props }) => {
   const C = icons[name] ?? Layers
   return <C {...props} />
@@ -20,31 +20,21 @@ const spanFor = (size) =>
       ? 'sm:col-span-2'
       : ''
 
-function StatCard({ s }) {
-  const a = accent(s.accent)
-  return (
-    <div className={`group flex h-full flex-col justify-between rounded-3xl border border-ink/10 ${a.soft} p-5 transition-all duration-300 hover:-translate-y-1 hover:${a.glow}`}>
-      <div className={`grid h-10 w-10 place-items-center rounded-2xl ${a.fill} text-ink/80`}>
-        <Icon name={s.icon} className="h-5 w-5" />
-      </div>
-      <div className="mt-6">
-        <p className="font-display text-4xl font-extrabold leading-none tracking-tight">
-          {s.value}
-          <span className="text-xl text-ink/50">{s.unit}</span>
-        </p>
-        <p className="mt-1 text-sm font-medium text-ink/60">{s.label}</p>
-      </div>
-    </div>
-  )
-}
-
 function ProjectCard({ p }) {
   const a = accent(p.accent)
   const feature = p.size === 'feature'
+  const linked = Boolean(p.link)
+
+  // Clickable repo card -> <a> (opens new tab); proprietary work -> plain <div>.
+  const Wrapper = linked ? 'a' : 'div'
+  const wrapperProps = linked ? { href: p.link, target: '_blank', rel: 'noreferrer' } : {}
+
   return (
-    <a
-      href="#work"
-      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-cream/70 p-6 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-ink/20 hover:${a.glow} ${feature ? 'justify-between' : 'justify-start'}`}
+    <Wrapper
+      {...wrapperProps}
+      className={`group relative flex h-full flex-col overflow-hidden rounded-3xl border border-ink/10 bg-cream/70 p-6 backdrop-blur transition-all duration-300 ${
+        linked ? `hover:-translate-y-1 hover:border-ink/20 hover:${a.glow}` : ''
+      } ${feature ? 'justify-between' : 'justify-start'}`}
     >
       {/* soft accent wash in the corner */}
       <div className={`absolute -right-10 -top-10 h-32 w-32 rounded-full ${a.soft} blur-2xl transition-opacity duration-300 group-hover:opacity-80`} />
@@ -63,7 +53,9 @@ function ProjectCard({ p }) {
           <h3 className={`font-display font-bold leading-tight tracking-tight ${feature ? 'text-3xl' : 'text-xl'}`}>
             {p.title}
           </h3>
-          <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-ink/40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink" />
+          {linked && (
+            <ArrowUpRight className="mt-1 h-5 w-5 shrink-0 text-ink/40 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-ink" />
+          )}
         </div>
         <p className={`mt-2 text-ink/65 ${feature ? 'text-base max-w-md' : 'text-sm'}`}>{p.blurb}</p>
 
@@ -74,8 +66,23 @@ function ProjectCard({ p }) {
             </span>
           ))}
         </div>
+
+        {/* footer affordance: "View code" for repos, a quiet marker for proprietary work */}
+        <div className="mt-4 flex items-center gap-1.5 text-xs font-semibold">
+          {linked ? (
+            <span className="inline-flex items-center gap-1.5 text-ink/55 transition-colors group-hover:text-ink">
+              <Github className="h-3.5 w-3.5" />
+              View code
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 text-ink/35">
+              <Lock className="h-3.5 w-3.5" />
+              Proprietary work
+            </span>
+          )}
+        </div>
       </div>
-    </a>
+    </Wrapper>
   )
 }
 
@@ -160,11 +167,10 @@ export default function BentoShowcase() {
   // Build an ordered list so we can stagger reveals + carry grid spans
   // on the Reveal wrapper (so col/row-span still apply to the grid item).
   const cells = [
-    feature && { key: feature.title, span: spanFor('feature'), node: <ProjectCard p={feature} /> },
-    ...stats.map((s) => ({ key: s.label, span: '', node: <StatCard s={s} /> })),
+    feature && { key: feature.title, span: 'sm:col-span-2', node: <ProjectCard p={feature} /> },
     { key: 'toolkit', span: 'sm:col-span-2', node: <SkillsCard /> },
-    { key: 'beyond', span: 'sm:col-span-2', node: <BeyondCard /> },
     ...rest.map((p) => ({ key: p.title, span: spanFor(p.size), node: <ProjectCard p={p} /> })),
+    { key: 'beyond', span: 'sm:col-span-2', node: <BeyondCard /> },
   ].filter(Boolean)
 
   return (
@@ -177,7 +183,7 @@ export default function BentoShowcase() {
           </h2>
         </div>
         <p className="max-w-xs text-sm text-ink/55">
-          Research prototypes, ML systems, and the numbers behind them — each card is its own little world.
+          Research prototypes and production ML systems — from broadcast video to medical imaging. Each card is its own little world.
         </p>
       </Reveal>
 
