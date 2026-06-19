@@ -40,7 +40,7 @@ function ProjectCard({ p }) {
       <div className={`absolute -right-10 -top-10 h-32 w-32 rounded-full ${a.soft} blur-2xl transition-opacity duration-300 group-hover:opacity-80`} />
 
       <div className="relative flex items-start justify-between">
-        <div className={`grid place-items-center rounded-2xl ${a.fill} ${feature ? 'h-14 w-14' : 'h-11 w-11'} text-ink/80`}>
+        <div className={`grid place-items-center rounded-2xl ${a.fill} ${feature ? 'h-14 w-14' : 'h-11 w-11'} text-obsidian/80`}>
           <Icon name={p.icon} className={feature ? 'h-7 w-7' : 'h-5 w-5'} />
         </div>
         <span className="rounded-full border border-ink/10 bg-cream/80 px-3 py-1 text-xs font-semibold text-ink/60">
@@ -88,8 +88,8 @@ function ProjectCard({ p }) {
 
 function SkillsCard() {
   return (
-    <div className="flex h-full flex-col justify-center rounded-3xl border border-ink/10 bg-ink p-6 text-cream">
-      <div className="flex items-center gap-2 text-cream/60">
+    <div className="flex h-full flex-col justify-center rounded-3xl border border-ink/10 bg-obsidian p-6 text-chalk dark:border-chalk/10 dark:bg-white/[0.04]">
+      <div className="flex items-center gap-2 text-chalk/60">
         <Layers className="h-4 w-4" />
         <span className="text-sm font-semibold uppercase tracking-widest">Toolkit</span>
       </div>
@@ -101,7 +101,7 @@ function SkillsCard() {
               {grp.items.map((s) => (
                 <span
                   key={s}
-                  className="rounded-full border border-cream/15 bg-cream/5 px-3 py-1 text-sm text-cream/85 transition-colors duration-200 hover:border-cream/40 hover:bg-cream/10"
+                  className="rounded-full border border-chalk/15 bg-chalk/5 px-3 py-1 text-sm text-chalk/85 transition-colors duration-200 hover:border-chalk/40 hover:bg-chalk/10"
                 >
                   {s}
                 </span>

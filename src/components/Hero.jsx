@@ -34,7 +34,7 @@ export default function Hero() {
             </a>
             <a
               href={`mailto:${profile.email}`}
-              className="group flex items-center gap-2 rounded-full border border-ink/15 bg-cream/60 px-6 py-3 font-semibold backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30 hover:bg-mint"
+              className="group flex items-center gap-2 rounded-full border border-ink/15 bg-cream/60 px-6 py-3 font-semibold backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-ink/30 hover:bg-mint hover:text-obsidian"
             >
               <Mail className="h-4 w-4" />
               Get in touch
@@ -44,7 +44,7 @@ export default function Hero() {
               target="_blank"
               rel="noreferrer"
               aria-label="LinkedIn"
-              className="grid h-12 w-12 place-items-center rounded-full border border-ink/15 bg-cream/60 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky"
+              className="grid h-12 w-12 place-items-center rounded-full border border-ink/15 bg-cream/60 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:bg-sky hover:text-obsidian"
             >
               <Linkedin className="h-5 w-5" />
             </a>
@@ -76,10 +76,10 @@ export default function Hero() {
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-tr from-lilac/30 via-transparent to-butter/20 mix-blend-soft-light" />
             </div>
 
-            <div className="mt-4 flex items-center justify-between rounded-2xl bg-ink px-4 py-3 text-cream">
+            <div className="mt-4 flex items-center justify-between rounded-2xl bg-obsidian px-4 py-3 text-chalk">
               <div>
                 <p className="font-display text-base font-bold leading-none">{profile.name}</p>
-                <p className="mt-1 text-xs text-cream/60">{profile.availability}</p>
+                <p className="mt-1 text-xs text-chalk/60">{profile.availability}</p>
               </div>
               <Circle className="h-3 w-3 animate-pulse fill-mint text-mint" />
             </div>

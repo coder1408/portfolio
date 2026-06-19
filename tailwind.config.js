@@ -1,6 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: ['./index.html', './src/**/*.{js,jsx}'],
+  darkMode: 'class',
   // Accent classes in src/lib/accents.js are interpolated into hover:${...}
   // template strings, so the JIT scanner can't see them. Safelist them.
   safelist: [
@@ -26,8 +27,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        cream: '#FBF7F0',
-        ink: '#241F1B',
+        // cream (surfaces) & ink (text) are CSS-variable backed so they flip
+        // automatically in dark mode — every bg-cream/text-ink/border-ink, and
+        // all their /opacity variants, re-theme without touching components.
+        cream: 'rgb(var(--cream) / <alpha-value>)',
+        ink: 'rgb(var(--ink) / <alpha-value>)',
+        // Non-flipping tokens for surfaces meant to stay dark in BOTH themes
+        // (footer card, toolkit card, dark pills). Using ink/cream there would
+        // invert them in dark mode; these keep a constant dark-on-light look.
+        obsidian: '#1E1922',
+        chalk: '#FBF7F0',
         mint: '#9EE6C4',
         terracotta: '#E8927C',
         butter: '#FCDF7A',

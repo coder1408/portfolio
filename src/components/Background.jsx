@@ -4,9 +4,10 @@
 export default function Background() {
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-      {/* base gradient mesh */}
+      {/* base gradient mesh — softened in dark mode so it reads as a faint aurora
+          over the plum-ink base rather than bright pastel washes */}
       <div
-        className="absolute inset-0"
+        className="absolute inset-0 dark:opacity-40"
         style={{
           background:
             'radial-gradient(60% 50% at 15% 0%, rgba(195,174,240,0.35) 0%, transparent 60%),' +
@@ -15,6 +16,9 @@ export default function Background() {
             'radial-gradient(50% 50% at 0% 90%, rgba(252,223,122,0.28) 0%, transparent 60%)',
         }}
       />
+
+      {/* starfield — only visible in dark mode (opacity handled in index.css) */}
+      <div className="starfield" />
 
       {/* floating pastel blobs — promoted to their own compositor layers so the
           forever-running animation doesn't repaint the rest of the page */}

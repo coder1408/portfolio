@@ -59,7 +59,7 @@ export default function Timeline() {
                   <span
                     className={`relative z-10 mt-1 grid h-8 w-8 shrink-0 place-items-center rounded-full ${a.fill} ring-4 ring-cream`}
                   >
-                    <Icon name={item.icon} className="h-4 w-4 text-ink/80" />
+                    <Icon name={item.icon} className="h-4 w-4 text-obsidian/80" />
                   </span>
 
                   {/* card */}
@@ -69,7 +69,7 @@ export default function Timeline() {
                         <h3 className="font-display text-xl font-bold tracking-tight">{item.role}</h3>
                         <p className="text-sm font-medium text-ink/55">{item.org}</p>
                       </div>
-                      <span className={`inline-block rounded-full ${a.soft} px-3 py-1 text-xs font-bold ${a.text}`}>
+                      <span className={`inline-block rounded-full ${a.soft} px-3 py-1 text-xs font-bold ${a.text} dark:bg-white/10 dark:text-chalk`}>
                         {item.period}
                       </span>
                     </div>

@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { ArrowUpRight, Menu, X } from 'lucide-react'
 import { navLinks, profile } from '../data/content'
+import ThemeToggle from './ThemeToggle'
 
 // Floating pill nav: active-section highlight + mobile menu.
 export default function Navbar() {
@@ -33,7 +34,7 @@ export default function Navbar() {
       <nav className="mx-auto max-w-6xl rounded-3xl border border-ink/10 bg-cream/70 px-4 py-2.5 shadow-[0_10px_30px_-18px_rgba(36,31,27,0.5)] backdrop-blur-md sm:rounded-full sm:px-6">
         <div className="flex items-center justify-between gap-4">
           <a href="#top" className="group flex items-center gap-2 font-display text-lg font-bold tracking-tight">
-            <span className="grid h-8 w-8 place-items-center rounded-full bg-ink font-display text-sm font-extrabold tracking-tight text-butter transition-transform duration-300 group-hover:rotate-12">
+            <span className="grid h-8 w-8 place-items-center rounded-full bg-obsidian font-display text-sm font-extrabold tracking-tight text-butter transition-transform duration-300 group-hover:rotate-12">
               IJ
             </span>
             {profile.firstName}
@@ -58,9 +59,10 @@ export default function Navbar() {
           </div>
 
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <a
               href={`mailto:${profile.email}`}
-              className="group hidden items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-all duration-300 hover:bg-lilac hover:text-ink sm:flex"
+              className="group hidden items-center gap-1.5 rounded-full bg-ink px-4 py-2 text-sm font-semibold text-cream transition-all duration-300 hover:bg-lilac hover:text-obsidian sm:flex"
             >
               Say hi
               <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
